@@ -15,8 +15,8 @@
 
 
 set -g current_bg NONE
-set segment_separator \uE0B0
-set right_segment_separator \uE0B0
+set -g segment_separator \uE0B0
+set -g right_segment_separator \uE0B0
 # ===========================
 # Helper methods
 # ===========================
@@ -24,6 +24,10 @@ set right_segment_separator \uE0B0
 set -g __fish_git_prompt_showdirtystate 'yes'
 set -g __fish_git_prompt_char_dirtystate '±'
 set -g __fish_git_prompt_char_cleanstate ''
+
+function available -a name -d "Check if a function or program is available."
+  type "$name" ^/dev/null >&2
+end
 
 function parse_git_dirty
   set -l submodule_syntax
